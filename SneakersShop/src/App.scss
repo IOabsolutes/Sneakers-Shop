@@ -1,0 +1,246 @@
+* {
+    font-family: 'Inter', system-ui;
+}
+
+
+
+.wrapper {
+    background: #FFFFFF;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 20px;
+    max-width: 1080px;
+    margin: 30px auto;
+
+
+    .cart-item {
+        background: #FFFFFF;
+        border: 1px solid #F3F3F3;
+        border-radius: 20px;
+        padding: 12px 20px 12px 20px;
+
+        p {
+            font-size: 15px;
+        }
+
+        b {
+            font-size: 16px;
+        }
+
+        .remove {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9px;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+
+            img {
+                opacity: 1;
+                transition: opacity 0.15s ease-in-out;
+
+                &:hover {
+                    opacity: 0.75;
+                }
+            }
+        }
+
+
+
+    }
+
+    .shadow {
+
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 100;
+
+        .overlay {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            width: 385px;
+            height: 100%;
+            right: 0;
+            background: #ffffff;
+            box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        
+
+            h2 {
+                margin: 0;
+                font-size: 24px;
+                margin-bottom: 20px;
+
+                .remove {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 9px;
+                    cursor: pointer;
+                    width: 32px;
+                    height: 32px;
+
+                    img {
+                        opacity: 1;
+                        transition: opacity 0.15s ease-in-out;
+
+                        &:hover {
+                            opacity: 0.75;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        .ItemsBox {
+            flex: 1;
+            overflow: auto;
+            margin-bottom: 30px;
+        }
+
+        .makeOrder {
+            position: relative;
+
+            &:hover {
+                img {
+                    transform: translateX(5px);
+                }
+
+            }
+
+            img {
+                position: absolute;
+                right: 35px;
+                top: 12.3px;
+                transition: transform 0.15s ease-in-out;
+            }
+        }
+    }
+}
+
+.check {
+    li {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    div {
+        position: relative;
+        bottom: 3px;
+        flex: 1;
+        height: 1px;
+        border-bottom: 1px dashed #DFDFDF;
+        margin: 0 10px;
+    }
+}
+
+.makeOrder {
+    button {
+        height: 174%;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        cursor: pointer;
+        color: #FFFFFF;
+        background: #9DD558;
+        border-radius: 18px;
+        border-style: none;
+        transition: background 0.15s ease-in-out;
+    }
+
+    &:hover {
+        button {
+            background: lighten(#9DD558, 7%);
+        }
+    }
+
+    &:active {
+        button {
+            background: darken(#9DD558, 9%);
+        }
+    }
+
+}
+
+.content {
+    h1 {
+        margin: 0;
+        padding: 20px;
+    }
+
+    .searchBlock {
+        border-radius: 10px;
+        border: 2px solid #F3F3F3;
+        padding: 0 15px;
+
+        .Search {
+            font-size: 16px;
+            border: 0;
+            padding: 13px;
+        }
+    }
+
+    // .card {
+
+    //     width: 220px;
+    //     padding: 30px;
+    //     background: #FFFFFF;
+    //     border: 1px solid #F3F3F3;
+    //     border-radius: 40px;
+    //     transition: box-shadow 0.19s ease-in-out, transform 0.24s ease-in-out;
+    //     margin: 10px;
+
+    //     &:hover {
+    //         box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.06);
+    //         transform: translate(0, -5px);
+    //     }
+
+    //     .favorite {
+    //         position: absolute;
+
+    //         .favorite-bth {
+    //             display: flex;
+    //             align-items: center;
+    //             justify-content: center;
+    //             cursor: pointer;
+    //             border-radius: 8px;
+    //             width: 32px;
+    //             height: 32px;
+    //         }
+    //     }
+
+    //     .nameSneaker {
+    //         margin-bottom: 0;
+    //     }
+
+    //     .buttonPlus {
+    //         display: flex;
+    //         justify-content: center;
+    //         align-items: center;
+    //         cursor: pointer;
+    //         border: 1px solid #F2F2F2;
+    //         box-sizing: border-box;
+    //         border-radius: 8px;
+    //         width: 32px;
+    //         height: 32px;
+    //     }
+
+    //     span,
+    //     p {
+    //         margin: 0;
+    //     }
+
+    // }
+
+    .cardsBox {
+        flex-wrap: wrap;
+        overflow: auto;
+    }
+}

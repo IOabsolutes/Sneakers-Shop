@@ -1,0 +1,51 @@
+.card {
+
+    width: 220px;
+    padding: 30px;
+    background: #FFFFFF;
+    border: 1px solid #F3F3F3;
+    border-radius: 40px;
+    transition: box-shadow 0.19s ease-in-out, transform 0.24s ease-in-out;
+    margin: 10px;
+
+    &:hover {
+        box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.06);
+        transform: translate(0, -5px);
+    }
+
+    .favorite {
+        position: absolute;
+
+        .favoriteBth {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 8px;
+            width: 32px;
+            height: 32px;
+        }
+    }
+
+    .nameSneaker {
+        margin-bottom: 0;
+    }
+
+    .buttonPlus {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border: 1px solid #F2F2F2;
+        box-sizing: border-box;
+        border-radius: 8px;
+        width: 32px;
+        height: 32px;
+    }
+
+    span,
+    p {
+        margin: 0;
+    }
+
+}
