@@ -1,13 +1,13 @@
 import React from 'react'
 
-export default function Drawler() {
+export default function Drawler(props) {
   return (
     
     <div style={{ display: "" }} className="shadow">
     <div className="overlay">
       <h2 className="d-flex justify-between">
         Cart
-        <button className="remove">
+        <button onClick={props.onClose} className="close">
           <img className="remove-bth" src="Icons/btnremove.svg" alt="" />
         </button>
       </h2>

@@ -4,7 +4,7 @@ import "./components/Card/Card.module.scss";
 import Card from "./components/Card";
 import Drawler from "./components/Drawler";
 import Header from "./components/header";
-
+import React from "react";
 function App() {
   const array = [
     {
@@ -18,11 +18,14 @@ function App() {
       price: "12,99",
     },
   ];
-
+  const [Cart, setCart] = React.useState(false);
+  const getCart = () => {
+    setCart(true);
+  };
   return (
     <div className="wrapper clear">
-      {/* <Drawler /> */}
-      <Header />
+      {Cart && <Drawler onClose={() => setCart(false)} />}
+      <Header getCart={getCart} />
 
       <div className="content p-40">
         <div className="d-flex align-center justify-between">
@@ -40,6 +43,7 @@ function App() {
               img={item.img}
               name={item.name}
               price={item.price}
+              onAddCard={() => console.log("worked")}
             />
           ))}
         </div>
