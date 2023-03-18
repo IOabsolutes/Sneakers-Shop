@@ -6,44 +6,61 @@ import Drawler from "./components/Drawler";
 import Header from "./components/header";
 import React from "react";
 function App() {
-  const array = [
-    {
-      img: "/imgOfSneakers/sneaker1.png",
-      name: "Man`s Sneakers Nike Blazer Mid Suede",
-      price: "30,99",
-    },
-    {
-      img: "/imgOfSneakers/sneaker1.png",
-      name: "Woman`s Sneakers Nike Blazer Mid Suede",
-      price: "12,99",
-    },
-  ];
+  const [Items, setItems] = React.useState([]);
+  const [CartItmes, setCartItmes] = React.useState([]);
+  const [searchValue, setSearchValue] = React.useState("");
   const [Cart, setCart] = React.useState(false);
-  const getCart = () => {
+  React.useEffect(() => {
+    fetch("https://641223dbf9fe8122ae1dd6a3.mockapi.io/items")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => setItems(data));
+  }, []);
+  const openCart = () => {
     setCart(true);
+  };
+  const getCartItmes = (item) => {
+    setCartItmes((prev) => [...prev, item]);
+  };
+  const handleSearch = (e) => {
+    const search = e.target.value;
+    setSearchValue(search);
+    const filtered = Items.filter((item) => item.name.includes(search));
+    console.log(filtered);
   };
   return (
     <div className="wrapper clear">
-      {Cart && <Drawler onClose={() => setCart(false)} />}
-      <Header getCart={getCart} />
+      {Cart && <Drawler Items={CartItmes} onClose={() => setCart(false)} />}
+      <Header openCart={openCart} />
 
       <div className="content p-40">
         <div className="d-flex align-center justify-between">
-          <h1>All Sneakers</h1>
+          <h1>
+            {searchValue
+              ? `Look at... : ${searchValue}`
+              : "All Sneakers"}
+          </h1>
 
           <div className="searchBlock d-flex align-center">
             <img width={17} height={17} src="/Icons/Vector.png" alt="search" />
-            <input className="Search" type="text" placeholder="Search..." />
+            <input
+              onChange={handleSearch}
+              className="Search"
+              type="text"
+              placeholder="Search..."
+            />
           </div>
         </div>
         <div className="cardsBox d-flex m-10">
-          {array.map((item) => (
+          {Items.map((item) => (
             <Card
               key={item.name}
-              img={item.img}
+              image={item.image}
               name={item.name}
               price={item.price}
-              onAddCard={() => console.log("worked")}
+              onAddCard={getCartItmes}
+              // getAdd={() => console.log("done")}5]]7
             />
           ))}
         </div>

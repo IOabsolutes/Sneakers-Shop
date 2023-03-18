@@ -1,5 +1,5 @@
 import React from "react";
-import "/imgBased/Logo.png";  
+import "/imgBased/Logo.png";
 export default function Header(props) {
   return (
     <header className="d-flex justify-between align-center p-40 mt-10">
@@ -13,7 +13,13 @@ export default function Header(props) {
 
       <ul className="d-flex align-center">
         <li className="m-20">
-          <img onClick={props.getCart}  width={25} height={25} src="/imgBased/ShopCart.svg" alt="" />
+          <img
+            onClick={props.openCart}
+            width={25}
+            height={25}
+            src="/imgBased/ShopCart.svg"
+            alt=""
+          />
           <span>15,33$</span>
         </li>
         <li className="m-20">

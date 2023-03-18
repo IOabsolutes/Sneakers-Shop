@@ -17,8 +17,10 @@
         border: 1px solid #F3F3F3;
         border-radius: 20px;
         padding: 12px 20px 12px 20px;
+        min-height: 130px;
 
         p {
+
             font-size: 15px;
         }
 
@@ -69,7 +71,7 @@
             background: #ffffff;
             box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
             padding: 30px;
-        
+
 
             h2 {
                 margin: 0;
@@ -84,7 +86,7 @@
                     cursor: pointer;
                     width: 32px;
                     height: 32px;
-                   
+
                     img {
                         opacity: 1;
                         transition: opacity 0.15s ease-in-out;
@@ -170,6 +172,7 @@
 }
 
 .content {
+
     h1 {
         margin: 0;
         padding: 20px;
