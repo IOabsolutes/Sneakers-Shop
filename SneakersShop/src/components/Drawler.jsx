@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Drawler({ onClose, Items = [] }) {
+export default function Drawler({ onClose, Items = [], handleRemove }) {
   return (
     <div className="shadow">
       <div className="overlay">
@@ -10,12 +10,21 @@ export default function Drawler({ onClose, Items = [] }) {
             <img className="remove-bth" src="Icons/btnremove.svg" alt="" />
           </button>
         </h2>
+
+        <div className="emptyCart d-flex flex-column align-center justify-center">
+          <img width={120} height={120} src="/imgBased/emptyBox.svg" alt="" />
+          <b>Your cart is empty</b>
+          <p>Add at least one pair of sneakres, to place an order </p>
+          <button className="goBack">
+            <img width={13} height={12} src="/Icons/arrow.svg" alt="" />
+            Go back
+          </button>
+        </div>
+
         <div className="ItemsBox">
+          {/* {Items.length === 0 ? "No items in the cart" : null} */}
           {Items.map((items) => (
-            <div
-              className="cart-item d-flex align-center mb-15"
-              key={items.name}
-            >
+            <div className="cart-item d-flex align-center mb-15" key={items.id}>
               <img
                 className="mr-20"
                 width={70}
@@ -27,7 +36,7 @@ export default function Drawler({ onClose, Items = [] }) {
                 <p className="mb-10">{items.name} </p>
                 <b>{items.price} $</b>
               </div>
-              <button className="remove">
+              <button onClick={() => handleRemove(items.id)} className="remove">
                 <img className="remove-bth" src="Icons/btnremove.svg" alt="" />
               </button>
             </div>

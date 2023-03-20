@@ -2,7 +2,31 @@
     font-family: 'Inter', system-ui;
 }
 
+// button {
+//     height: 174%;
+//     width: 50%;
+//     font-weight: 600;
+//     font-size: 16px;
+//     line-height: 19px;
+//     text-align: center;
+//     cursor: pointer;
+//     color: #FFFFFF;
+//     background: #9DD558;
+//     border-radius: 18px;
+//     border-style: none;
+//     transition: background 0.15s ease-in-out;
 
+//     &:hover {
+//         button {
+//             background: lighten(#9DD558, 7%);
+//         }
+//     }
+
+//     &:active {
+//         button {
+//             background: darken(#9DD558, 9%);
+//         }
+//     }
 
 .wrapper {
     background: #FFFFFF;
@@ -100,6 +124,32 @@
             }
         }
 
+        .emptyCart {
+            position: relative;
+            top: 22%;
+
+                img {
+                    position: absolute;
+                    transform: scale(-1, 1);
+                    transition: transform 0.15s ease-in-out;
+                    left: 20px;
+                }
+
+                &:hover {
+                    img {
+                        transform: translateX(5px);
+                    }
+
+                }
+            }
+
+            b,
+            p {
+                text-align: center;
+                margin-top: 15px;
+            }
+        }
+
         .ItemsBox {
             flex: 1;
             overflow: auto;
@@ -124,7 +174,7 @@
             }
         }
     }
-}
+
 
 .check {
     li {
@@ -188,59 +238,17 @@
             border: 0;
             padding: 13px;
         }
+
+        .clearInput {
+            cursor: pointer;
+            opacity: 40%;
+
+            &:hover {
+                transition: opacity 0.18s ease-in-out;
+                opacity: 100%;
+            }
+        }
     }
-
-    // .card {
-
-    //     width: 220px;
-    //     padding: 30px;
-    //     background: #FFFFFF;
-    //     border: 1px solid #F3F3F3;
-    //     border-radius: 40px;
-    //     transition: box-shadow 0.19s ease-in-out, transform 0.24s ease-in-out;
-    //     margin: 10px;
-
-    //     &:hover {
-    //         box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.06);
-    //         transform: translate(0, -5px);
-    //     }
-
-    //     .favorite {
-    //         position: absolute;
-
-    //         .favorite-bth {
-    //             display: flex;
-    //             align-items: center;
-    //             justify-content: center;
-    //             cursor: pointer;
-    //             border-radius: 8px;
-    //             width: 32px;
-    //             height: 32px;
-    //         }
-    //     }
-
-    //     .nameSneaker {
-    //         margin-bottom: 0;
-    //     }
-
-    //     .buttonPlus {
-    //         display: flex;
-    //         justify-content: center;
-    //         align-items: center;
-    //         cursor: pointer;
-    //         border: 1px solid #F2F2F2;
-    //         box-sizing: border-box;
-    //         border-radius: 8px;
-    //         width: 32px;
-    //         height: 32px;
-    //     }
-
-    //     span,
-    //     p {
-    //         margin: 0;
-    //     }
-
-    // }
 
     .cardsBox {
         flex-wrap: wrap;
