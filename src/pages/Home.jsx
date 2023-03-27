@@ -40,9 +40,7 @@ export default function Home({
         ).map((item) => (
           <Card
             key={item.id}
-            image={item.image}
-            name={item.name}
-            price={item.price}
+            {...item}
             onAddCard={(obj) => getCartItmes(obj)}
             onAddFavorites={getFavorite}
           />

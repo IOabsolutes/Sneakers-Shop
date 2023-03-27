@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Card from "../components/Card";
-export default function Favorites({ favoriteList, getFavorite, myFavorite }) {
+export default function Favorites({ favoriteList, getFavorite }) {
   return (
     <div className="content p-40">
       <div className="d-flex align-center">
@@ -9,7 +9,7 @@ export default function Favorites({ favoriteList, getFavorite, myFavorite }) {
           <Link to="/">
             <img src="/Icons/goBack.svg" alt="" />
           </Link>
-        </div> 
+        </div>
 
         <h1>My Favorite</h1>
       </div>
@@ -17,9 +17,7 @@ export default function Favorites({ favoriteList, getFavorite, myFavorite }) {
         {favoriteList.map((item) => (
           <Card
             key={item.id}
-            image={item.image}
-            name={item.name}
-            price={item.price}
+            {...item}
             onAddCard={(obj) => getCartItmes(obj)}
             onAddFavorites={getFavorite}
             myFavorite={true}
