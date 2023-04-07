@@ -1,14 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Card from "../components/Card";
-import MainContext from "../context";
-
-export default function Favorites({ getFavorite }) {
-  const { favoriteList } = React.useContext(MainContext);
-
+export default function Profile({ orderItems, getFavorite }) {
   return (
     <div className="content p-40">
-      {favoriteList.length > 0 ? (
+      {orderItems.length > 0 ? (
         <div>
           <div className="d-flex align-center">
             <div className="goToHome">
@@ -16,17 +12,16 @@ export default function Favorites({ getFavorite }) {
                 <img src="/Icons/goBack.svg" alt="" />
               </Link>
             </div>
-
-            <h1>My Favorite</h1>
+            <h1>My Purchases</h1>
           </div>
           <div className="cardsBox d-flex m-10">
-            {favoriteList.map((item) => (
+            {orderItems.map((item) => (
               <Card
                 key={item.id}
                 {...item}
                 onAddCard={(obj) => getCartItmes(obj)}
                 onAddFavorites={getFavorite}
-                myFavorite={true}
+                ordered
               />
             ))}
           </div>
@@ -34,9 +29,10 @@ export default function Favorites({ getFavorite }) {
       ) : (
         <div className="NoItemsFound d-flex justify-center">
           <div className="d-flex align-center flex-column">
-            <img src="/Icons/sadSmile.svg" alt="" />
-            <h2>You didn't add sneaker 😞</h2>
-            <p className="lowerText mt-5">Add at least one sneaker</p>
+            <img src="/Icons/SadlySmile.svg" alt="" />
+            <h2>You didn't place any order</h2>
+            <p className="lowerText mt-5">Are you a poor?</p>
+            <span className="lowerText">Place at least one order.</span>
             <Link className="mt-25" to="/">
               <button className="Goback p-20 d-flex justify-center align-center">
                 Go back

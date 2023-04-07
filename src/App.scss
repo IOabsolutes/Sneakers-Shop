@@ -102,6 +102,12 @@
             .ItemsBox {
                 max-height: 75%;
 
+                p {
+                    font-size: 14px;
+                    font-weight: 600;
+
+                }
+
                 .cart-item {
                     display: flex;
                     flex-direction: row;
@@ -168,8 +174,8 @@
 
     .emptyCart {
         button {
-            height: 174%;
-            width: 60%;
+            height: 60%;
+            width: 55%;
             padding: 8.7px;
             font-weight: 600;
             font-size: 16px;
@@ -181,6 +187,7 @@
             border-radius: 18px;
             border-style: none;
             transition: background 0.15s ease-in-out;
+            ;
         }
 
         &:hover {
@@ -242,57 +249,118 @@
 
     }
 
-    .content {
-        .goToHome {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 9px;
+
+}
+
+.content {
+    .goToHome {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9px;
+        cursor: pointer;
+        width: 32px;
+        height: 32px;
+
+        img {
+            opacity: 1, 3;
+            transition: opacity 0.15s ease-in-out;
+
+            &:hover {
+                opacity: 0.55;
+            }
+        }
+
+    }
+
+    h1 {
+        margin: 0;
+        padding: 20px;
+    }
+
+    .searchBlock {
+        border-radius: 10px;
+        border: 2px solid #F3F3F3;
+        padding: 0 15px;
+
+        .Search {
+            font-size: 16px;
+            border: 0;
+            padding: 13px;
+        }
+
+        .clearInput {
             cursor: pointer;
-            width: 32px;
-            height: 32px;
+            opacity: 40%;
 
-            img {
-                opacity: 1,3;
-                transition: opacity 0.15s ease-in-out;
-
-                &:hover {
-                    opacity: 0.55;
-                }
+            &:hover {
+                transition: opacity 0.18s ease-in-out;
+                opacity: 100%;
             }
-
-        }
-
-        h1 {
-            margin: 0;
-            padding: 20px;
-        }
-
-        .searchBlock {
-            border-radius: 10px;
-            border: 2px solid #F3F3F3;
-            padding: 0 15px;
-
-            .Search {
-                font-size: 16px;
-                border: 0;
-                padding: 13px;
-            }
-
-            .clearInput {
-                cursor: pointer;
-                opacity: 40%;
-
-                &:hover {
-                    transition: opacity 0.18s ease-in-out;
-                    opacity: 100%;
-                }
-            }
-        }
-
-        .cardsBox {
-            flex-wrap: wrap;
-            overflow: auto;
         }
     }
+
+    .cardsBox {
+        flex-wrap: wrap;
+        overflow: auto;
+        flex: 1;
+
+    }
+}
+
+.NoItemsFound {
+    h2 {
+        margin-bottom: 7px;
+    }
+
+    button {
+        height: 60%;
+        width: 100%;
+        padding: 8.7px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        cursor: pointer;
+        color: #FFFFFF;
+        background: #9DD558;
+        border-radius: 18px;
+        border-style: none;
+        transition: background 0.15s ease-in-out;
+
+        &:hover {
+            img {
+                transform: translateX(5px);
+            }
+        }
+
+        img {
+            transition: transform 0.15s ease-in-out;
+
+
+        }
+    }
+
+    .lowerText {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        text-align: center;
+        opacity: 0.4;
+        margin-bottom: 0.5px;
+    }
+
+    &:hover {
+        button {
+            background: lighten(#9DD558, 7%);
+        }
+    }
+
+    &:active {
+        button {
+            background: darken(#9DD558, 9%);
+        }
+    }
+
+
 }

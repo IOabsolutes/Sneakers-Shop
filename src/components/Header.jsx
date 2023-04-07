@@ -5,7 +5,7 @@ export default function Header(props) {
   return (
     <header className="d-flex justify-between align-center p-40 mt-10">
       <div className="d-flex align-center">
-        <Link to="/"> 
+        <Link to="/">
           <img width={40} height={40} src="/imgBased/Logo.png" alt="" />
         </Link>
         <div>
@@ -21,7 +21,7 @@ export default function Header(props) {
               width={25}
               height={25}
               src="/imgBased/ShopCart.svg"
-              alt=""
+              alt="Cart"
             />
             <span>15,33$</span>
           </li>
@@ -29,17 +29,23 @@ export default function Header(props) {
           <li className="m-20">
             <Link to="/favoritesss">
               <img
-                onClick={props.openFavorite}
                 width={25}
                 height={25}
                 src="/imgBased/Favorite.svg"
-                alt=""
+                alt="Favorite"
               />
             </Link>
           </li>
 
           <li className="m-20">
-            <img width={25} height={25} src="/imgBased/Profile.svg" alt="" />
+            <Link to="/profile">
+              <img
+                width={25}
+                height={25}
+                src="/imgBased/Profile.svg"
+                alt="Profile"
+              />
+            </Link>
           </li>
         </ul>
       </>

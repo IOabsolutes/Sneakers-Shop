@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../components/Card";
+import MainContext from "../context";
 export default function Home({
   Items,
   getCartItmes,
@@ -7,7 +8,13 @@ export default function Home({
   searchValue,
   handleSearch,
   handleClear,
+  loading = loaded,
 }) {
+  const { handleOrder } = React.useContext(MainContext);
+  const filterItems = Items.filter((val) =>
+    val.name.toLowerCase().includes(searchValue.toLowerCase())
+  );
+
   return (
     <div className="content p-40">
       <div className="d-flex align-center justify-between">
@@ -34,15 +41,15 @@ export default function Home({
           )}
         </div>
       </div>
+
       <div className="cardsBox d-flex m-10">
-        {Items.filter((val) =>
-          val.name.toLowerCase().includes(searchValue.toLowerCase())
-        ).map((item) => (
+        {(loading ? [...Array(8)] : filterItems).map((item) => (
           <Card
-            key={item.id}
             {...item}
             onAddCard={(obj) => getCartItmes(obj)}
             onAddFavorites={getFavorite}
+            ordered={handleOrder(item && item.id)}
+            loading={loading}
           />
         ))}
       </div>

@@ -1,5 +1,5 @@
 {
-  "sneakers": [
+  "items": [
     {
       "id": 1,
       "image": "/imgOfSneakers/sneaker1.jpg",
@@ -25,7 +25,27 @@
       "price": "33,99"
     }
   ],
-  "Cart": [{
-  }],
-  "Favorites": [{}]
+  "Cart": [
+    {
+      "image": "/imgOfSneakers/sneaker3.jpg",
+      "name": "Sneakers Puma X Aka Boku Future Rider",
+      "price": "44,99",
+      "id": 3
+    }
+  ],
+  "Favorites": [
+    {
+      "image": "/imgOfSneakers/sneaker3.jpg",
+      "name": "Sneakers Puma X Aka Boku Future Rider",
+      "price": "44,99",
+      "id": 3
+    },
+    {
+      "image": "/imgOfSneakers/sneaker2.jpg",
+      "name": "Man`s Sneakers Nike Air Max 270",
+      "price": "32,99",
+      "id": 2
+    }
+  ],
+  "user_Order": []
 }

@@ -1,6 +1,12 @@
 import React from "react";
 
-export default function Drawler({ onClose, Items = [], handleRemove }) {
+export default function Drawler({
+  onClose,
+  Items = [],
+  handleRemove,
+  CartItmes,
+}) {
+ 
   return (
     <div className="shadow">
       <div className="overlay">
@@ -25,7 +31,7 @@ export default function Drawler({ onClose, Items = [], handleRemove }) {
                     src={items.image}
                     alt=""
                   />
-                  <div className="mr-20">
+                  <div className="mr-20 text-center">
                     <p className="mb-10">{items.name} </p>
                     <b>{items.price} $</b>
                   </div>
@@ -48,12 +54,12 @@ export default function Drawler({ onClose, Items = [], handleRemove }) {
                 <li className="d-flex mb-10">
                   <span>Total</span>
                   <div></div>
-                  <b>300 $</b>
+                  <b>{0} $</b>
                 </li>
                 <li className="d-flex">
                   <span>Tax 5%</span>
                   <div></div>
-                  <b>15 $</b>
+                  <b>{0} $</b>
                 </li>
               </ul>
             </div>
@@ -75,7 +81,7 @@ export default function Drawler({ onClose, Items = [], handleRemove }) {
             />
             <b>Your cart is empty</b>
             <p>Add at least one pair of sneakres, to place an order </p>
-            <button onClick={onClose}>
+            <button className="Goback" onClick={onClose}>
               Go back
               <img width={13} height={12} src="/Icons/arrow.svg" alt="" />
             </button>
