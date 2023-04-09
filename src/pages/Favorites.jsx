@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import Card from "../components/Card";
 import MainContext from "../context";
 
-export default function Favorites({ getFavorite }) {
-  const { favoriteList } = React.useContext(MainContext);
+export default function Favorites() {
+  const { favoriteList, getFavorite } = React.useContext(MainContext);
 
   return (
     <div className="content p-40">

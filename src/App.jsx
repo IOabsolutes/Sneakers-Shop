@@ -89,22 +89,22 @@ function App() {
   };
   return (
     <MainContext.Provider
-      value={{ Items, CartItmes, favoriteList, handleOrder }}
+      value={{
+        Items,
+        CartItmes,
+        favoriteList,
+        handleOrder,
+        getFavorite,
+        setCart,
+        setCartItmes,
+        setOrderItems,
+      }}
     >
       <div className="wrapper clear">
-        {Cart && (
-          <Drawler
-            handleRemove={handleRemove}
-            Items={CartItmes}
-            onClose={() => setCart(false)}
-          />
-        )}
+        {Cart && <Drawler handleRemove={handleRemove} Items={CartItmes} />}
         <Header openCart={openCart} />
         <Routes>
-          <Route
-            path="/favoritesss"
-            element={<Favorites getFavorite={getFavorite} />}
-          />
+          <Route path="/favoritesss" element={<Favorites />} />
           <Route
             path="/"
             element={

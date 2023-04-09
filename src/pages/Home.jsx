@@ -1,6 +1,5 @@
 import React from "react";
 import Card from "../components/Card";
-import MainContext from "../context";
 export default function Home({
   Items,
   getCartItmes,
@@ -10,7 +9,6 @@ export default function Home({
   handleClear,
   loading = loaded,
 }) {
-  const { handleOrder } = React.useContext(MainContext);
   const filterItems = Items.filter((val) =>
     val.name.toLowerCase().includes(searchValue.toLowerCase())
   );
@@ -48,7 +46,6 @@ export default function Home({
             {...item}
             onAddCard={(obj) => getCartItmes(obj)}
             onAddFavorites={getFavorite}
-            ordered={handleOrder(item && item.id)}
             loading={loading}
           />
         ))}

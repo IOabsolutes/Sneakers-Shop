@@ -1,18 +1,22 @@
 import React from "react";
+import Info from "./Inforamtion";
+import MainContext from "../context";
 
-export default function Drawler({
-  onClose,
-  Items = [],
-  handleRemove,
-  CartItmes,
-}) {
- 
+export default function Drawler({ Items = [], handleRemove }) {
+  const { setCart, setCartItmes, setOrderItems, CartItmes } =
+    React.useContext(MainContext);
+  const [makeOrder, setMakeOrder] = React.useState(false);
+  const sentOrder = () => {
+    setMakeOrder(true);
+    setOrderItems([...CartItmes], Items);
+    setCartItmes([]);
+  };
   return (
     <div className="shadow">
       <div className="overlay">
         <h2 className="d-flex justify-between">
           Cart
-          <button onClick={onClose} className="close">
+          <button onClick={() => setCart(false)} className="close">
             <img className="remove-bth" src="Icons/btnremove.svg" alt="" />
           </button>
         </h2>
@@ -64,28 +68,22 @@ export default function Drawler({
               </ul>
             </div>
             <div className="makeOrder">
-              <button className="w100p">
+              <button onClick={sentOrder} className="w100p">
                 Make order
                 <img width={13} height={12} src="/Icons/arrow.svg" alt="" />
               </button>
             </div>
           </div>
         ) : (
-          <div className="emptyCart d-flex flex-column align-center justify-center">
-            <img
-              className="emptyBox"
-              width={120}
-              height={120}
-              src="/imgBased/emptyBox.svg"
-              alt=""
-            />
-            <b>Your cart is empty</b>
-            <p>Add at least one pair of sneakres, to place an order </p>
-            <button className="Goback" onClick={onClose}>
-              Go back
-              <img width={13} height={12} src="/Icons/arrow.svg" alt="" />
-            </button>
-          </div>
+          <Info
+            img={makeOrder ? "/Icons/Complite.svg" : "/imgBased/emptyBox.svg"}
+            title={makeOrder ? "You made the order!" : "Your cart is empty"}
+            description={
+              makeOrder
+                ? "Your order will sent to kurer "
+                : "Add at least one pair of sneakres, to place an order"
+            }
+          />
         )}
       </div>
     </div>

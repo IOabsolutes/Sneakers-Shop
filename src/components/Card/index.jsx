@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Card.module.scss";
 import ContentLoader from "react-content-loader";
+import MainContext from "../../context";
 export default function Card({
   image,
   name,
@@ -9,14 +10,14 @@ export default function Card({
   onAddCard,
   onAddFavorites,
   myFavorite = false,
-  ordered = false,
+
   loading = false,
 }) {
-  const [Add, setAdd] = React.useState(ordered);
+  const { handleOrder } = React.useContext(MainContext);
+
   const [favorite, setFavorite] = React.useState(myFavorite);
   const getAdd = () => {
     onAddCard({ image, name, price, id });
-    setAdd(!Add);
   };
   const getFavorite = () => {
     onAddFavorites({ image, name, price, id });
@@ -63,7 +64,11 @@ export default function Card({
               <img
                 width={32}
                 height={32}
-                src={Add ? "/Icons/onAddIcon.svg" : "/Icons/addIcon.svg"}
+                src={
+                  handleOrder(id)
+                    ? "/Icons/onAddIcon.svg"
+                    : "/Icons/addIcon.svg"
+                }
                 alt=""
               />
             </button>

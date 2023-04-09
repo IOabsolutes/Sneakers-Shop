@@ -31,14 +31,6 @@
       "name": "Sneakers Puma X Aka Boku Future Rider",
       "price": "44,99",
       "id": 3
-    }
-  ],
-  "Favorites": [
-    {
-      "image": "/imgOfSneakers/sneaker3.jpg",
-      "name": "Sneakers Puma X Aka Boku Future Rider",
-      "price": "44,99",
-      "id": 3
     },
     {
       "image": "/imgOfSneakers/sneaker2.jpg",
@@ -47,5 +39,6 @@
       "id": 2
     }
   ],
+  "Favorites": [],
   "user_Order": []
 }
