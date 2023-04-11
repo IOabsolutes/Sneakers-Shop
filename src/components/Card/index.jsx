@@ -10,7 +10,6 @@ export default function Card({
   onAddCard,
   onAddFavorites,
   myFavorite = false,
-
   loading = false,
 }) {
   const { handleOrder } = React.useContext(MainContext);

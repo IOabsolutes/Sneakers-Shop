@@ -1,7 +1,10 @@
 import React from "react";
 import "/imgBased/Logo.png";
 import { Link } from "react-router-dom";
+import MainContext from "../context";
 export default function Header(props) {
+  const { countPrice } = React.useContext(MainContext);
+
   return (
     <header className="d-flex justify-between align-center p-40 mt-10">
       <div className="d-flex align-center">
@@ -23,7 +26,7 @@ export default function Header(props) {
               src="/imgBased/ShopCart.svg"
               alt="Cart"
             />
-            <span>15,33$</span>
+            <span>{countPrice}$</span>
           </li>
 
           <li className="m-20">

@@ -37,6 +37,10 @@ function App() {
     }
     getData();
   }, []);
+  const countPrice = CartItmes.reduce(
+    (sum, obj) => parseFloat(obj.price) + sum,
+    0
+  ).toFixed(2);
   const openCart = () => {
     setCart(true);
   };
@@ -98,6 +102,7 @@ function App() {
         setCart,
         setCartItmes,
         setOrderItems,
+        countPrice,
       }}
     >
       <div className="wrapper clear">

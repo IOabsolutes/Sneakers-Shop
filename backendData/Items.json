@@ -4,41 +4,46 @@
       "id": 1,
       "image": "/imgOfSneakers/sneaker1.jpg",
       "name": "Man`s Sneakers Nike Blazer Mid Suede",
-      "price": "30,99"
+      "price": "30.99"
     },
     {
       "id": 2,
       "image": "/imgOfSneakers/sneaker2.jpg",
       "name": "Man`s Sneakers Nike Air Max 270",
-      "price": "32,99"
+      "price": "32.99"
     },
     {
       "id": 3,
       "image": "/imgOfSneakers/sneaker3.jpg",
       "name": "Sneakers Puma X Aka Boku Future Rider",
-      "price": "44,99"
+      "price": "44.99"
     },
     {
       "id": 4,
       "image": "/imgOfSneakers/sneaker4.jpg",
       "name": "Man`s Sneakers Nike Blazer Mid Suede White",
-      "price": "33,99"
+      "price": "33.99"
     }
   ],
-  "Cart": [
-    {
-      "image": "/imgOfSneakers/sneaker3.jpg",
-      "name": "Sneakers Puma X Aka Boku Future Rider",
-      "price": "44,99",
-      "id": 3
-    },
-    {
-      "image": "/imgOfSneakers/sneaker2.jpg",
-      "name": "Man`s Sneakers Nike Air Max 270",
-      "price": "32,99",
-      "id": 2
-    }
-  ],
+  "Cart": [],
   "Favorites": [],
-  "user_Order": []
+  "user_Order": [
+    {
+      "Items": [
+        {
+          "image": "/imgOfSneakers/sneaker3.jpg",
+          "name": "Sneakers Puma X Aka Boku Future Rider",
+          "price": "44,99",
+          "id": 3
+        },
+        {
+          "image": "/imgOfSneakers/sneaker4.jpg",
+          "name": "Man`s Sneakers Nike Blazer Mid Suede White",
+          "price": "33,99",
+          "id": 4
+        }
+      ],
+      "id": 1
+    }
+  ]
 }

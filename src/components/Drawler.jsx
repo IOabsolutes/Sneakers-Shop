@@ -1,15 +1,39 @@
 import React from "react";
 import Info from "./Inforamtion";
 import MainContext from "../context";
+import axios from "axios";
 
 export default function Drawler({ Items = [], handleRemove }) {
-  const { setCart, setCartItmes, setOrderItems, CartItmes } =
+  const { setCart, setCartItmes, setOrderItems, CartItmes, countPrice } =
     React.useContext(MainContext);
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const [makeOrder, setMakeOrder] = React.useState(false);
-  const sentOrder = () => {
-    setMakeOrder(true);
-    setOrderItems([...CartItmes], Items);
-    setCartItmes([]);
+  const [processing, setProcessing] = React.useState(false);
+  const [orderId, setOrderId] = React.useState(null);
+  const Tax = parseFloat(countPrice * 0.05).toFixed(2);
+  const sentOrder = async () => {
+    try {
+      setProcessing(true);
+      const { data } = await axios.post("http://localhost:3000/user_Order", {
+        Items: CartItmes,
+      });
+      for (let i = 0; i < CartItmes.length; i++) {
+        await axios.delete(
+          `http://localhost:3000/Cart/${CartItmes[i].id}`,
+          CartItmes[i].id
+        );
+        delay(1000);
+      }
+
+      setOrderId(data.id);
+      setOrderItems([...CartItmes], Items);
+      setMakeOrder(true);
+
+      setCartItmes([]);
+    } catch {
+      alert("Something went wrong");
+    }
+    setProcessing(false);
   };
   return (
     <div className="shadow">
@@ -58,17 +82,21 @@ export default function Drawler({ Items = [], handleRemove }) {
                 <li className="d-flex mb-10">
                   <span>Total</span>
                   <div></div>
-                  <b>{0} $</b>
+                  <b>{countPrice} $</b>
                 </li>
                 <li className="d-flex">
                   <span>Tax 5%</span>
                   <div></div>
-                  <b>{0} $</b>
+                  <b>{Tax} $</b>
                 </li>
               </ul>
             </div>
             <div className="makeOrder">
-              <button onClick={sentOrder} className="w100p">
+              <button
+                disabled={processing}
+                onClick={sentOrder}
+                className="w100p"
+              >
                 Make order
                 <img width={13} height={12} src="/Icons/arrow.svg" alt="" />
               </button>
@@ -77,10 +105,14 @@ export default function Drawler({ Items = [], handleRemove }) {
         ) : (
           <Info
             img={makeOrder ? "/Icons/Complite.svg" : "/imgBased/emptyBox.svg"}
-            title={makeOrder ? "You made the order!" : "Your cart is empty"}
+            title={
+              makeOrder
+                ? `You made the order! Your number is ${orderId}`
+                : "Your cart is empty"
+            }
             description={
               makeOrder
-                ? "Your order will sent to kurer "
+                ? "Your order will sent to kurer and will be delivered to your address"
                 : "Add at least one pair of sneakres, to place an order"
             }
           />
