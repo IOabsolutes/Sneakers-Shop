@@ -2,15 +2,15 @@ import React from "react";
 import Info from "./Inforamtion";
 import MainContext from "../context";
 import axios from "axios";
+import { useCart } from "./CustomHooks/useCart";
 
 export default function Drawler({ Items = [], handleRemove }) {
-  const { setCart, setCartItmes, setOrderItems, CartItmes, countPrice } =
-    React.useContext(MainContext);
+  const { setCart, setOrderItems } = React.useContext(MainContext);
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const { CartItmes, setCartItmes, countPrice, Tax } = useCart();
   const [makeOrder, setMakeOrder] = React.useState(false);
   const [processing, setProcessing] = React.useState(false);
   const [orderId, setOrderId] = React.useState(null);
-  const Tax = parseFloat(countPrice * 0.05).toFixed(2);
   const sentOrder = async () => {
     try {
       setProcessing(true);

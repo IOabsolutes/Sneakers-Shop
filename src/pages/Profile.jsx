@@ -1,7 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Card from "../components/Card";
-export default function Profile({ orderItems, getFavorite }) {
+import MainContext from "../context";
+import axios from "axios";
+import { NotItemsFound } from "../components/NotItemsFound";
+export default function Profile() {
+  const { orderItems, getFavorite, setOrderItems } =
+    React.useContext(MainContext);
+  React.useEffect(() => {
+    (async () => {
+      try {
+        const { data } = await axios.get("http://localhost:3000/user_Order");
+        // console.log(user_Order.data.map((obj) => obj.Items).flat());
+        setOrderItems(data.map((obj) => obj.Items).flat());
+        console.log(data.reduce((prev, obj) => [...prev, ...obj.Items], []));
+      } catch {
+        alert("Something went wrong");
+      }
+    })();
+  }, []);
   return (
     <div className="content p-40">
       {orderItems.length > 0 ? (
@@ -16,37 +33,18 @@ export default function Profile({ orderItems, getFavorite }) {
           </div>
           <div className="cardsBox d-flex m-10">
             {orderItems.map((item) => (
-              <Card
-                key={item.id}
-                {...item}
-                onAddCard={(obj) => getCartItmes(obj)}
-                onAddFavorites={getFavorite}
-                ordered
-              />
+              <Card key={item.id} {...item} onAddFavorites={getFavorite} />
             ))}
           </div>
         </div>
       ) : (
-        <div className="NoItemsFound d-flex justify-center">
-          <div className="d-flex align-center flex-column">
-            <img src="/Icons/SadlySmile.svg" alt="" />
-            <h2>You didn't place any order</h2>
-            <p className="lowerText mt-5">Are you a poor?</p>
-            <span className="lowerText">Place at least one order.</span>
-            <Link className="mt-25" to="/">
-              <button className="Goback p-20 d-flex justify-center align-center">
-                Go back
-                <img
-                  className="ml-20"
-                  width={13}
-                  height={13}
-                  src="/Icons/arrow.svg"
-                  alt=""
-                />
-              </button>
-            </Link>
-          </div>
-        </div>
+        <NotItemsFound
+          title={"You didn't place any order"}
+          image="/Icons/arrow.svg"
+          uperText={"Are you a poor?"}
+          lowerText={"Place at least one order."}
+          buttonText={"Make a order"}
+        />
       )}
     </div>
   );

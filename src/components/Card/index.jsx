@@ -59,7 +59,7 @@ export default function Card({
               <span>Price:</span>
               <b>{price} $</b>
             </div>
-            <button onClick={getAdd} className={styles.buttonPlus}>
+           {onAddCard && <button onClick={getAdd} className={styles.buttonPlus}>
               <img
                 width={32}
                 height={32}
@@ -70,7 +70,7 @@ export default function Card({
                 }
                 alt=""
               />
-            </button>
+            </button>}
           </div>
         </>
       )}

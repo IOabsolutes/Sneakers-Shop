@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Card from "../components/Card";
 import MainContext from "../context";
-
+import { NotItemsFound } from "../components/NotItemsFound";
 export default function Favorites() {
   const { favoriteList, getFavorite } = React.useContext(MainContext);
 
@@ -32,25 +32,12 @@ export default function Favorites() {
           </div>
         </div>
       ) : (
-        <div className="NoItemsFound d-flex justify-center">
-          <div className="d-flex align-center flex-column">
-            <img src="/Icons/sadSmile.svg" alt="" />
-            <h2>You didn't add sneaker 😞</h2>
-            <p className="lowerText mt-5">Add at least one sneaker</p>
-            <Link className="mt-25" to="/">
-              <button className="Goback p-20 d-flex justify-center align-center">
-                Go back
-                <img
-                  className="ml-20"
-                  width={13}
-                  height={13}
-                  src="/Icons/arrow.svg"
-                  alt=""
-                />
-              </button>
-            </Link>
-          </div>
-        </div>
+        <NotItemsFound
+          title={"You didn't add sneaker 😞"}
+          image="/Icons/arrow.svg"
+          lowerText={"Add at least one sneaker."}
+          buttonText={"Add Sneaker"}
+        />
       )}
     </div>
   );

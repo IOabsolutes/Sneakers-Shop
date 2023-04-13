@@ -1,10 +1,10 @@
 import React from "react";
 import "/imgBased/Logo.png";
 import { Link } from "react-router-dom";
-import MainContext from "../context";
-export default function Header(props) {
-  const { countPrice } = React.useContext(MainContext);
 
+import { useCart } from "./CustomHooks/useCart";
+export default function Header(props) {
+  const { countPrice } = useCart();
   return (
     <header className="d-flex justify-between align-center p-40 mt-10">
       <div className="d-flex align-center">

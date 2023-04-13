@@ -2,7 +2,6 @@ import "./App.scss";
 import "./components/header.scss";
 import "./components/Card/Card.module.scss";
 import { Route, Routes } from "react-router-dom";
-
 import Drawler from "./components/Drawler";
 import Header from "./components/header";
 import React from "react";
@@ -15,10 +14,10 @@ function App() {
   const [Cart, setCart] = React.useState(false);
   const [loaded, setLoaded] = React.useState(true);
   const [searchValue, setSearchValue] = React.useState("");
-
   const [Items, setItems] = React.useState([]);
   const [CartItmes, setCartItmes] = React.useState([]);
   const [favoriteList, setFavoriteList] = React.useState([]);
+
   const [orderItems, setOrderItems] = React.useState([]);
 
   React.useEffect(() => {
@@ -27,20 +26,14 @@ function App() {
       const Items = await axios.get("http://localhost:3000/items");
       const Cart = await axios.get("http://localhost:3000/Cart");
       const Favorites = await axios.get("http://localhost:3000/Favorites");
-      const user_Order = await axios.get("http://localhost:3000/user_Order");
 
       setCartItmes(Cart.data);
       setFavoriteList(Favorites.data);
-      setOrderItems(user_Order.data);
       setItems(Items.data);
       setLoaded(false);
     }
     getData();
   }, []);
-  const countPrice = CartItmes.reduce(
-    (sum, obj) => parseFloat(obj.price) + sum,
-    0
-  ).toFixed(2);
   const openCart = () => {
     setCart(true);
   };
@@ -91,6 +84,7 @@ function App() {
   const handleOrder = (id) => {
     return CartItmes.some((obj) => Number(obj.id) === Number(id));
   };
+
   return (
     <MainContext.Provider
       value={{
@@ -102,7 +96,7 @@ function App() {
         setCart,
         setCartItmes,
         setOrderItems,
-        countPrice,
+        orderItems,
       }}
     >
       <div className="wrapper clear">
@@ -125,10 +119,7 @@ function App() {
               />
             }
           />
-          <Route
-            path="/profile"
-            element={<Profile orderItems={orderItems} />}
-          />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
     </MainContext.Provider>
