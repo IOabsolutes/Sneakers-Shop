@@ -42,14 +42,16 @@ export default function Card({
       ) : (
         <>
           <div className={styles.favorite}>
-            <button onClick={getFavorite} className={styles.favoriteBth}>
-              <img
-                width={32}
-                height={32}
-                src={favorite ? "/Icons/liked.svg" : "/Icons/unliked.svg"}
-                alt=""
-              />
-            </button>
+            {onAddFavorites && (
+              <button onClick={getFavorite} className={styles.favoriteBth}>
+                <img
+                  width={32}
+                  height={32}
+                  src={favorite ? "/Icons/liked.svg" : "/Icons/unliked.svg"}
+                  alt=""
+                />
+              </button>
+            )}
           </div>
           <img width={133} height={112} src={image} alt="" />
           <p className="nameSneaker">{name}</p>
@@ -59,18 +61,20 @@ export default function Card({
               <span>Price:</span>
               <b>{price} $</b>
             </div>
-           {onAddCard && <button onClick={getAdd} className={styles.buttonPlus}>
-              <img
-                width={32}
-                height={32}
-                src={
-                  handleOrder(id)
-                    ? "/Icons/onAddIcon.svg"
-                    : "/Icons/addIcon.svg"
-                }
-                alt=""
-              />
-            </button>}
+            {onAddCard && (
+              <button onClick={getAdd} className={styles.buttonPlus}>
+                <img
+                  width={32}
+                  height={32}
+                  src={
+                    handleOrder(id)
+                      ? "/Icons/onAddIcon.svg"
+                      : "/Icons/addIcon.svg"
+                  }
+                  alt=""
+                />
+              </button>
+            )}
           </div>
         </>
       )}

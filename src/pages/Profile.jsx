@@ -7,21 +7,22 @@ import { NotItemsFound } from "../components/NotItemsFound";
 export default function Profile() {
   const { orderItems, getFavorite, setOrderItems } =
     React.useContext(MainContext);
+  const [loaded, setLoaded] = React.useState(true);
   React.useEffect(() => {
     (async () => {
       try {
         const { data } = await axios.get("http://localhost:3000/user_Order");
-        // console.log(user_Order.data.map((obj) => obj.Items).flat());
         setOrderItems(data.map((obj) => obj.Items).flat());
-        console.log(data.reduce((prev, obj) => [...prev, ...obj.Items], []));
+        // console.log(data.reduce((prev, obj) => [...prev, ...obj.Items], []));
       } catch {
         alert("Something went wrong");
       }
+      setLoaded(false);
     })();
   }, []);
   return (
     <div className="content p-40">
-      {orderItems.length > 0 ? (
+      {(loaded ? [...Array(8)] : orderItems).length > 0 ? (
         <div>
           <div className="d-flex align-center">
             <div className="goToHome">
@@ -32,8 +33,12 @@ export default function Profile() {
             <h1>My Purchases</h1>
           </div>
           <div className="cardsBox d-flex m-10">
-            {orderItems.map((item) => (
-              <Card key={item.id} {...item} onAddFavorites={getFavorite} />
+            {(loaded ? [...Array(8)] : orderItems).map((item, index) => (
+              <Card
+                key={index}
+                {...item}
+                loading={loaded}
+              />
             ))}
           </div>
         </div>

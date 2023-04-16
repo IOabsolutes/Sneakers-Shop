@@ -17,7 +17,6 @@ function App() {
   const [Items, setItems] = React.useState([]);
   const [CartItmes, setCartItmes] = React.useState([]);
   const [favoriteList, setFavoriteList] = React.useState([]);
-
   const [orderItems, setOrderItems] = React.useState([]);
 
   React.useEffect(() => {
@@ -97,10 +96,11 @@ function App() {
         setCartItmes,
         setOrderItems,
         orderItems,
+        loading: loaded,
       }}
     >
       <div className="wrapper clear">
-        {Cart && <Drawler handleRemove={handleRemove} Items={CartItmes} />}
+        <Drawler handleRemove={handleRemove} Items={CartItmes} opended={Cart} />
         <Header openCart={openCart} />
         <Routes>
           <Route path="/favoritesss" element={<Favorites />} />
