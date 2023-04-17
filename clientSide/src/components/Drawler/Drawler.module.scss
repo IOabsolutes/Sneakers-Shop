@@ -1,0 +1,211 @@
+.shadow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    visibility: hidden;
+    overflow-x: hidden !important;
+
+
+    .overlay {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 385px;
+        height: 100%;
+        right: 0;
+        background: #ffffff;
+        box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        transform: translateX(100%);
+        transition: transform 0.35s ease-in-out, visibility 0.35s ease-in-out;
+
+        h2 {
+            margin: 0;
+            font-size: 24px;
+            margin-bottom: 20px;
+
+            .close {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 9px;
+                cursor: pointer;
+                width: 32px;
+                height: 32px;
+
+                img {
+                    opacity: 1;
+                    transition: opacity 0.15s ease-in-out;
+
+                    &:hover {
+                        opacity: 0.75;
+                    }
+                }
+
+            }
+        }
+    }
+
+
+
+    .cartItem {
+        background: #FFFFFF;
+        border: 1px solid #F3F3F3;
+        border-radius: 20px;
+        padding: 12px 20px 12px 20px;
+        min-height: 130px;
+
+        p {
+
+            font-size: 15px;
+        }
+
+        b {
+            font-size: 16px;
+        }
+
+        .remove {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9px;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+
+            img {
+                opacity: 1;
+                transition: opacity 0.15s ease-in-out;
+
+                &:hover {
+                    opacity: 0.75;
+                }
+            }
+        }
+    }
+
+    .notEmptyCart {
+        margin: 0;
+        height: 97%;
+
+        .ItemsBox {
+            max-height: 75%;
+
+            p {
+                font-size: 14px;
+                font-weight: 600;
+
+            }
+
+            .cartItem {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+    }
+
+    b,
+    p {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .makeOrder {
+        position: relative;
+
+        &:hover {
+            img {
+                transform: translateX(5px);
+            }
+
+        }
+
+        img {
+            position: absolute;
+            right: 35px;
+            top: 12.3px;
+            transition: transform 0.15s ease-in-out;
+        }
+
+        button:disabled {
+            animation: procssing-order 0.7s ease-in-out infinite;
+        }
+
+
+
+    }
+
+    .check {
+        li {
+            display: flex;
+            align-items: flex-end;
+        }
+
+        div {
+            position: relative;
+            bottom: 3px;
+            flex: 1;
+            height: 1px;
+            border-bottom: 1px dashed #DFDFDF;
+            margin: 0 10px;
+        }
+    }
+}
+
+.makeOrder {
+    button {
+        height: 174%;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        cursor: pointer;
+        color: #FFFFFF;
+        background: #9DD558;
+        border-radius: 18px;
+        border-style: none;
+        transition: background 0.15s ease-in-out;
+    }
+
+    &:hover {
+        button {
+            background: lighten(#9DD558, 7%);
+        }
+    }
+
+    &:active {
+        button {
+            background: darken(#9DD558, 9%);
+        }
+    }
+
+
+
+    button:disabled {
+        background-color: #7d7d7d;
+    }
+
+
+
+}
+
+.ItemsBox {
+    flex: 1;
+    overflow: auto;
+    margin-bottom: 30px;
+}
+
+.visible {
+    visibility: visible;
+    opacity: 1;
+
+    .overlay {
+        transform: translateX(0)
+    }
+}

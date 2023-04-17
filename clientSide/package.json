@@ -1,0 +1,37 @@
+{
+  "name": "sneakersshop",
+  "private": true,
+  "proxy": "http://127.0.0.1:5173/",
+  "version": "0.0.0",
+  "homepage": "https://ioabsolutes.github.io/Sneakers-Shop/",
+  "type": "Commonjs module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "json-server -w ./backendData/Items.json",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "dependencies": {
+    "axios": "^1.3.4",
+    "gh-pages": "^5.0.0",
+    "localforage": "^1.10.0",
+    "macro-css": "^1.0.5",
+    "match-sorter": "^6.3.1",
+    "node-sass": "^8.0.0",
+    "react": "^18.2.0",
+    "react-content-loader": "^6.2.1",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.9.0",
+    "sort-by": "^0.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "json-server": "^0.17.3",
+    "sass": "^1.58.3",
+    "vite": "^4.1.0"
+  }
+}
